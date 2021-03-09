@@ -11,8 +11,9 @@ pipeline {
         TERRAFORM_CMD = 'init'
       }
       steps {
-        sh 'read'
-        sh '/bin/terraform init'
+        sh 'echo \'Terraform init\''
+        sh 'terraform init'
+        sleep(unit: 'MINUTES', time: 5)
       }
     }
 
