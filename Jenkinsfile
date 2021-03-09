@@ -12,9 +12,10 @@ pipeline {
       }
       steps {
         sh 'echo \'Terraform init\''
+        sh 'id'
+        sleep(unit: 'MINUTES', time: 5)
         sh '''PATH=/bin/terraform
 terraform init'''
-        sleep(unit: 'MINUTES', time: 5)
       }
     }
 
