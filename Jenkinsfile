@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('Terraform init') {
       steps {
+        echo 'Terraform init'
         container(name: 'terraform-agent') {
           sh 'terraform init'
         }
@@ -18,14 +19,20 @@ pipeline {
     stage('Terraform plan') {
       steps {
         sh 'echo \'Terraform ${TERRAFORM_CMD}\''
-        sh '/bin/terraform plan'
+        container(name: 'terraform-agent') {
+          sh 'terraform plan'
+        }
+
       }
     }
 
     stage('Terraform apply') {
       steps {
-        sh 'echo \'Terraform ${TERRAFORM_CMD}\''
-        sh '/bin/terraform apply'
+        sh 'echo \'Terraform apply\''
+        container(name: 'terraform-agent') {
+          sh 'terraform apply'
+        }
+
       }
     }
 
