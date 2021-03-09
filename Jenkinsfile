@@ -11,7 +11,7 @@ pipeline {
         TERRAFORM_CMD = 'init'
       }
       steps {
-        sh 'echo \'Terraform ${TERRAFORM_CMD}\''
+        sh 'hostname'
         sh '/bin/terraform init'
       }
     }
