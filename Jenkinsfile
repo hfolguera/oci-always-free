@@ -11,8 +11,7 @@ pipeline {
         TERRAFORM_CMD = 'init'
       }
       steps {
-        sh '''echo \'Terraform init\'
-terraform init'''
+        sh 'echo \'Terraform ${TERRAFORM_CMD}\''
       }
     }
 
@@ -21,7 +20,7 @@ terraform init'''
         TERRAFORM_CMD = 'plan'
       }
       steps {
-        sh 'echo \'Terraform plan\''
+        sh 'echo \'Terraform ${TERRAFORM_CMD}\''
       }
     }
 
@@ -30,7 +29,7 @@ terraform init'''
         TERRAFORM_CMD = 'apply'
       }
       steps {
-        sh 'echo \'Terraform apply\''
+        sh 'echo \'Terraform ${TERRAFORM_CMD}\''
       }
     }
 
