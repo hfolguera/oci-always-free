@@ -12,7 +12,8 @@ pipeline {
       }
       steps {
         sh 'echo \'Terraform init\''
-        sh 'terraform init'
+        sh '''PATH=/bin/terraform
+terraform init'''
         sleep(unit: 'MINUTES', time: 5)
       }
     }
