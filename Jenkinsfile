@@ -1,7 +1,7 @@
 pipeline {
   agent {
-    docker {
-      image 'hashicorp/terraform:latest'
+    node {
+      label 'terraform-agent'
     }
 
   }
