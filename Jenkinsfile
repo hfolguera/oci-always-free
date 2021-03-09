@@ -12,6 +12,7 @@ pipeline {
       }
       steps {
         sh 'echo \'Terraform ${TERRAFORM_CMD}\''
+        sh 'terraform init'
       }
     }
 
@@ -21,6 +22,7 @@ pipeline {
       }
       steps {
         sh 'echo \'Terraform ${TERRAFORM_CMD}\''
+        sh 'terraform plan'
       }
     }
 
@@ -30,6 +32,7 @@ pipeline {
       }
       steps {
         sh 'echo \'Terraform ${TERRAFORM_CMD}\''
+        sh 'terraform apply'
       }
     }
 
