@@ -31,7 +31,7 @@ pipeline {
 
     stage('Terraform plan') {
       steps {
-        sh 'echo \'Terraform ${TERRAFORM_CMD}\''
+        sh 'ls -lh'
         container(name: 'terraform-agent') {
           sh 'terraform plan'
         }
@@ -41,9 +41,8 @@ pipeline {
 
     stage('Terraform apply') {
       steps {
-        sh 'echo \'Terraform apply\''
         container(name: 'terraform-agent') {
-          sh 'terraform apply'
+          sh 'terraform apply -auto-approve'
         }
 
       }
