@@ -17,7 +17,7 @@ pipeline {
       steps {
         echo 'Terraform init'
         withCredentials([sshUserPrivateKey(
-            credentialsId: 'hfolguera-pem-ssh',
+            credentialsId: 'hfolguera-pem-sshkey',
             keyFileVariable: 'SSH_KEY')])
         {
             sh 'cp "$SSH_KEY" .ssh/jenkins.pem'
