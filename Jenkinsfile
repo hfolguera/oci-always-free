@@ -15,13 +15,13 @@ pipeline {
   stages {
     stage('Terraform init') {
       steps {
+        echo 'Terraform init'
         withCredentials([sshUserPrivateKey(
             credentialsId: 'hfolguera-pem-ssh',
             keyFileVariable: 'SSH_KEY')])
         {
             sh 'cp "$SSH_KEY" .ssh/jenkins.pem'
         }
-        echo 'Terraform init'
         container(name: 'terraform-agent') {
           sh 'terraform init'
         }
