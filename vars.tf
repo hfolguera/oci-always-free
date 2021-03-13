@@ -26,3 +26,11 @@ variable private_key_path {
     default = "/Users/hfolguera/.ssh/id_rsa.pem"
     description = "Path with the Private SSH key used to connect to OCI"
 }
+
+variable user_ocid {
+    description = "User OCID"
+}
+
+variable fingerprint {
+    description = "User fingerprint"
+}
