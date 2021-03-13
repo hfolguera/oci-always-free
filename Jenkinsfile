@@ -33,7 +33,7 @@ pipeline {
           sh 'echo "{\"credentials\": {\"app.terraform.io\": {\"token\": \"$LOGIN_TOKEN\"}}}" > $HOME/.terraform.d/credentials.tfrc.json'
         }
         container(name: 'terraform-agent') {
-          sh 'terrform login'
+          sh 'terraform login'
           sh 'terraform init'
         }
 
