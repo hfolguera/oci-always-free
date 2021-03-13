@@ -33,8 +33,8 @@ pipeline {
     stage('Terraform plan') {
       steps {
         sh 'ls -lh'
-        sh 'terraform -v'
         container(name: 'terraform-agent') {
+          sh 'terraform -v'
           sh 'terraform plan'
         }
 
