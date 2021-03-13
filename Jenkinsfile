@@ -27,10 +27,10 @@ pipeline {
         }
         withCredentials([string(
             credentialsId: 'TERRAFORM_CLOUD_LOGIN_TOKEN',
-            keyFileVariable: 'LOGIN_TOKEN')])
+            variable: 'LOGIN_TOKEN')])
         {
           sh 'mkdir $HOME/.terraform.d'
-          sh 'echo "{credentials: {app.terraform.io: {token: $LOGIN_TOKEN}}}" > $HOME/.terraform.d/credentials.tfrc.json'
+          sh 'echo "{\"credentials\": {\"app.terraform.io\": {\"token\": \"$LOGIN_TOKEN\"}}}" > $HOME/.terraform.d/credentials.tfrc.json'
         }
         container(name: 'terraform-agent') {
           sh 'terraform init'
