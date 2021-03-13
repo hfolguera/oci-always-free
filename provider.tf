@@ -6,6 +6,14 @@ terraform {
       version = "=4.4"
     }
   }
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "calfolguera"
+
+    workspaces {
+      name = "oci-always-free"
+    }
+  }
 }
 
 provider oci {
