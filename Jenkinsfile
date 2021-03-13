@@ -29,9 +29,9 @@ pipeline {
             credentialsId: 'TERRAFORM_CLOUD_LOGIN_TOKEN',
             variable: 'LOGIN_TOKEN')])
         {
-          sh 'if [ ! -d $HOME/.terraform.d ]; then mkdir $HOME/.terraform.d; fi'
-          sh 'echo "{\\"credentials\\": {\\"app.terraform.io\\": {\\"token\\": \\"$LOGIN_TOKEN\\"}}}" > $HOME/.terraform.d/credentials.tfrc.json'
-          sh 'cat $HOME/.terraform.d/credentials.tfrc.json'
+          sh 'if [ ! -d /root/.terraform.d ]; then mkdir /root/.terraform.d; fi'
+          sh 'echo "{\\"credentials\\": {\\"app.terraform.io\\": {\\"token\\": \\"$LOGIN_TOKEN\\"}}}" > /root/.terraform.d/credentials.tfrc.json'
+          sh 'cat /root/.terraform.d/credentials.tfrc.json'
         }
         container(name: 'terraform-agent') {
           sh 'terraform init'
