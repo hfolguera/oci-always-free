@@ -6,8 +6,9 @@ terraform {
       version = "=4.4"
     }
   }
-terraform {
+
   backend "kubernetes" {
+    namespace        = "jenkins"
     secret_suffix    = "state"
     load_config_file = true
   }
