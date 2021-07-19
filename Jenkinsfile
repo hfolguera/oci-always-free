@@ -18,26 +18,9 @@ pipeline {
     stage('Terraform init') {
       steps {
         echo 'Terraform init'
-        withCredentials([sshUserPrivateKey(
-            credentialsId: 'hfolguera-pem-sshkey',
-            keyFileVariable: 'SSH_KEY')])
-        {
-          sh 'mkdir .oci'
-          sh 'cp "$SSH_KEY" .oci/jenkins.pem'
-        }
         container(name: 'terraform-agent') {
-        withCredentials([string(
-            credentialsId: 'TERRAFORM_CLOUD_LOGIN_TOKEN',
-            variable: 'LOGIN_TOKEN')])
-        {
-          sh 'if [ ! -d $HOME/.terraform.d ]; then mkdir $HOME/.terraform.d; fi'
-          sh 'echo "{\\"credentials\\": {\\"app.terraform.io\\": {\\"token\\": \\"$LOGIN_TOKEN\\"}}}" > $HOME/.terraform.d/credentials.tfrc.json'
-          sh 'cat $HOME/.terraform.d/credentials.tfrc.json'
-          sh 'terraform init'
+            sh 'terraform init'
         }
-        
-        }
-
       }
     }
 

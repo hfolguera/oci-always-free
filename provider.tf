@@ -6,13 +6,12 @@ terraform {
       version = "=4.4"
     }
   }
-  backend "remote" {
-    hostname = "app.terraform.io"
-    organization = "calfolguera"
-
-    workspaces {
-      name = "oci-always-free"
-    }
+terraform {
+  backend "kubernetes" {
+    secret_suffix    = "state"
+    load_config_file = true
+  }
+}
   }
 }
 
