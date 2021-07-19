@@ -12,8 +12,6 @@ terraform {
     load_config_file = true
   }
 }
-  }
-}
 
 provider oci {
   tenancy_ocid     = var.tenancy_ocid
