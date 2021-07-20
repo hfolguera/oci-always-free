@@ -10,6 +10,7 @@ terraform {
   backend "kubernetes" {
     namespace        = "jenkins"
     host             = "https://kubernetes.default"
+    insecure         = true
     secret_suffix    = "state"
     load_config_file = true
   }
